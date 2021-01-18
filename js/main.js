@@ -27,6 +27,7 @@ function task2CssJsToggleSquare() {
   if (elm) toggleElement(elm);
 }
 
+// Toggle element
 function toggleElement(elm) {
   let pos = elm.className.search(" hidden ");
   pos !== -1 ? elm.className = elm.className.replace(" hidden ", "") : elm.className += " hidden ";
@@ -47,4 +48,17 @@ function task4CssJsToggleElement() {
   let sel = document.getElementById("task4__input").value;
   let elms = document.querySelectorAll(sel);
   for (let i = 0; i < elms.length; i++) toggleElement(elms[i]);
+}
+
+// task 4
+document.getElementById("task5__square").addEventListener("click", task5Alert);
+
+function task5Alert() {
+  alert("Привет!");
+  document.getElementById("task5__square").removeEventListener("click", task5Alert);
+  document.getElementById("task5__square").addEventListener("click", () => task5Hide(this));
+}
+
+function task5Hide(elm) {
+  elm.style.display = "none";
 }
