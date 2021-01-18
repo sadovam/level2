@@ -1,3 +1,20 @@
-$(document).ready(function() {
-    
-});
+
+// task 1
+document.getElementById("task1__btn1").onclick = task1CssRemoveSquare;
+document.getElementById("task1__btn2").onclick = task1JsRemoveSquare; 
+document.getElementById("task1__btn3").onclick = task1CssJsRemoveSquare;
+
+function task1CssRemoveSquare() {
+  let elm = document.getElementById("task1-square1");
+  if (elm) elm.style.display = "none";
+}
+
+function task1JsRemoveSquare() {
+  let elm = document.getElementById("task1-square2");
+  if (elm) elm.remove();
+}
+
+function task1CssJsRemoveSquare() {
+  let elm = document.getElementById("task1-square3");
+  if (elm && !elm.className.endsWith("hidden")) elm.className += " hidden";
+}
