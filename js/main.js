@@ -18,3 +18,11 @@ function task1CssJsRemoveSquare() {
   let elm = document.getElementById("task1-square3");
   if (elm && !elm.className.endsWith("hidden")) elm.className += " hidden";
 }
+
+// task 2
+document.getElementById("task2__btn1").onclick = task2CssJsToggleSquare;
+
+function task2CssJsToggleSquare() {
+  let elm = document.getElementById("task2-square1");
+  if (elm) elm.className.endsWith("hidden") ? elm.className = elm.className.slice(0, -7) : elm.className += " hidden";
+}
