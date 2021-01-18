@@ -20,9 +20,21 @@ function task1CssJsRemoveSquare() {
 }
 
 // task 2
-document.getElementById("task2__btn1").onclick = task2CssJsToggleSquare;
+document.getElementById("task2__btn").onclick = task2CssJsToggleSquare;
 
 function task2CssJsToggleSquare() {
   let elm = document.getElementById("task2-square1");
-  if (elm) elm.className.endsWith("hidden") ? elm.className = elm.className.slice(0, -7) : elm.className += " hidden";
+  if (elm) toggleElement(elm);
+}
+
+function toggleElement(elm) {
+  elm.className.endsWith("hidden") ? elm.className = elm.className.slice(0, -7) : elm.className += " hidden";
+}
+
+// task 3
+document.getElementById("task3__btn").onclick = task3CssJsToggleSquares;
+
+function task3CssJsToggleSquares() {
+  let elms = document.getElementsByClassName("task3-square");
+  for (let i = 0; i < elms.length; i++) toggleElement(elms[i]);
 }

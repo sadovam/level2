@@ -22,7 +22,7 @@ body {
 }
 
 .task-section:nth-child(2) {
-  background-color: rgb(229, 231, 231);
+  background-color: rgb(248, 252, 204);
 }
 
 .black-square {
@@ -54,6 +54,13 @@ body {
   width: 200px;
   margin: 5px;
   padding: 3px 5px;
+}
+
+.task3-squares {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 640px) {
