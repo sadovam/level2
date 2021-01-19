@@ -46,11 +46,12 @@ document.getElementById("task4__btn").onclick = task4CssJsToggleElement;
 
 function task4CssJsToggleElement() {
   let sel = document.getElementById("task4__input").value;
+  if(!sel) return;
   let elms = document.querySelectorAll(sel);
   for (let i = 0; i < elms.length; i++) toggleElement(elms[i]);
 }
 
-// task 4
+// task 5
 document.getElementById("task5__square").addEventListener("click", task5Alert);
 
 function task5Alert() {
@@ -61,4 +62,12 @@ function task5Alert() {
 
 function task5Hide(elm) {
   elm.style.display = "none";
+}
+
+// task 6 
+document.getElementById("task6__btn").addEventListener("mouseover", task6ToggleSquare);
+document.getElementById("task6__btn").addEventListener("mouseout", task6ToggleSquare);
+
+function task6ToggleSquare() {
+  toggleElement(document.getElementById("task6__square"));
 }
