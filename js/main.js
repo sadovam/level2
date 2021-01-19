@@ -120,3 +120,7 @@ document.onmousemove = (e) => task10SetCoordinates(e, document.getElementById("t
 function task10SetCoordinates(e, elm) {
   elm.innerHTML = `Х: ${e.clientX}, У: ${e.clientY}`;
 }
+
+// task 11
+document.getElementById("task11__text").innerHTML = "Language: " + navigator.language;
+
