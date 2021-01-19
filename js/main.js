@@ -124,3 +124,13 @@ function task10SetCoordinates(e, elm) {
 // task 11
 document.getElementById("task11__text").innerHTML = "Language: " + navigator.language;
 
+// task 12
+if ("geolocation" in navigator) {
+  navigator.geolocation.getCurrentPosition((position) => task12GetUserCoordinates(position));
+} else {
+  document.getElementById("task12__text").innerHTML = "Местоположение<br> недоступно";
+}
+
+function task12GetUserCoordinates(position) {
+  document.getElementById("task12__text").innerHTML = `Ш: ${position.coords.latitude} <br>Д: ${position.coords.longitude}`;
+}
