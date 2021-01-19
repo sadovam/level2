@@ -113,3 +113,10 @@ function task9ShowImages() {
   }
   
 }
+
+// task 10
+document.onmousemove = (e) => task10SetCoordinates(e, document.getElementById("task10__text"));
+
+function task10SetCoordinates(e, elm) {
+  elm.innerHTML = `Х: ${e.clientX}, У: ${e.clientY}`;
+}

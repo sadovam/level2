@@ -107,6 +107,16 @@ body {
   height: 100px;
 }
 
+.task10 {
+  width: 150px;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: teal;
+  text-align: center;
+}
+
 @media only screen and (max-width: 640px) {
   container {
     max-width: 100%;
