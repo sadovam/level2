@@ -71,3 +71,17 @@ document.getElementById("task6__btn").addEventListener("mouseout", task6ToggleSq
 function task6ToggleSquare() {
   toggleElement(document.getElementById("task6__square"));
 }
+
+// task 7
+document.getElementById("task7__input").addEventListener("focus", () => elementOnOff(document.getElementById("task7__rect"), true));
+document.getElementById("task7__input").addEventListener("keydown", () => elementOnOff(document.getElementById("task7__rect"), false));
+
+// Show / hide element
+function elementOnOff(elm, isOn) {
+  let pos = elm.className.search(" hidden ");
+  if(isOn && pos !== -1) {
+    elm.className = elm.className.replace(" hidden ", "");
+  } else if(!isOn && pos === -1) {
+    elm.className += " hidden ";
+  }
+}

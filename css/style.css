@@ -83,6 +83,13 @@ body {
   margin: 15px;
 }
 
+.green-rectangle {
+  width: 50px;
+  height: 20px;
+  background-color: green;
+  margin: 15px;
+}
+
 @media only screen and (max-width: 640px) {
   container {
     max-width: 100%;
