@@ -29,8 +29,8 @@ function task2CssJsToggleSquare() {
 
 // Toggle element
 function toggleElement(elm) {
-  let pos = elm.className.search(" hidden ");
-  pos !== -1 ? elm.className = elm.className.replace(" hidden ", "") : elm.className += " hidden ";
+  let pos = elm.className.search(" hidden");
+  pos !== -1 ? elm.className = elm.className.replace(" hidden", "") : elm.className += " hidden";
 }
 
 // task 3
@@ -78,10 +78,21 @@ document.getElementById("task7__input").addEventListener("keydown", () => elemen
 
 // Show / hide element
 function elementOnOff(elm, isOn) {
-  let pos = elm.className.search(" hidden ");
+  let pos = elm.className.search(" hidden");
   if(isOn && pos !== -1) {
-    elm.className = elm.className.replace(" hidden ", "");
+    elm.className = elm.className.replace(" hidden", "");
   } else if(!isOn && pos === -1) {
-    elm.className += " hidden ";
+    elm.className += " hidden";
   }
+}
+
+// task 8
+document.getElementById("task8__btn").onclick = task8ShowImage;
+
+function task8ShowImage() {
+  let imgUrl = document.getElementById("task8__input").value;
+  if(!imgUrl) return;
+  let img = document.getElementById("task8__img");
+  img.src = imgUrl;
+  elementOnOff(img, true);
 }
