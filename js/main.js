@@ -96,3 +96,20 @@ function task8ShowImage() {
   img.src = imgUrl;
   elementOnOff(img, true);
 }
+
+// task 9
+document.getElementById("task9__btn").onclick = task9ShowImages;
+
+function task9ShowImages() {
+  let imgUrls = document.getElementById("task9__text").value;
+  let imgHolder = document.getElementById("task9__images");
+  imgHolder.className = "task9__images";
+  if(!imgUrls) return;
+  for(let url of imgUrls.split("\n")) {
+    let img = document.createElement("img");
+    img.src = url;
+    img.className = "img";
+    imgHolder.appendChild(img);
+  }
+  
+}
