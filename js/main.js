@@ -121,3 +121,45 @@ if ("geolocation" in navigator) {
 function task12GetUserCoordinates(position) {
   document.getElementById("task12__text").innerHTML = `Ш: ${position.coords.latitude} <br>Д: ${position.coords.longitude}`;
 }
+
+// task 13
+
+window.addEventListener("unload", task13ValuesToStorages);
+window.addEventListener("load", task13ValuesFromStorages);
+
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+
+function task13ValuesToStorages() {
+  localStorage.setItem('val13', document.getElementById("task13__input1").innerHTML);
+  sessionStorage.setItem('val13', document.getElementById("task13__input2").innerHTML);
+  setCookie("val13", document.getElementById("task13__input3").innerHTML, 30);
+}
+
+function task13ValuesFromStorages() {
+  document.getElementById("task13__input1").innerHTML = localStorage.getItem('val13');
+  document.getElementById("task13__input2").innerHTML = sessionStorage.getItem('val13');
+  document.getElementById("task13__input3").innerHTML = getCookie("val13");
+}
+
