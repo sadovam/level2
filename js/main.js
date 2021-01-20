@@ -16,7 +16,7 @@ function task1JsRemoveSquare() {
 
 function task1CssJsRemoveSquare() {
   let elm = document.getElementById("task1-square3");
-  if (elm && !elm.className.endsWith("hidden")) elm.className += " hidden";
+  if (elm && !elm.classList.contains("hidden")) elm.classList.add("hidden");
 }
 
 // task 2
@@ -24,13 +24,7 @@ document.getElementById("task2__btn").onclick = task2CssJsToggleSquare;
 
 function task2CssJsToggleSquare() {
   let elm = document.getElementById("task2-square1");
-  if (elm) toggleElement(elm);
-}
-
-// Toggle element
-function toggleElement(elm) {
-  let pos = elm.className.search(" hidden");
-  pos !== -1 ? elm.className = elm.className.replace(" hidden", "") : elm.className += " hidden";
+  if (elm) elm.classList.toggle("hidden");
 }
 
 // task 3
@@ -38,7 +32,7 @@ document.getElementById("task3__btn").onclick = task3CssJsToggleSquares;
 
 function task3CssJsToggleSquares() {
   let elms = document.getElementsByClassName("task3-square");
-  for (let i = 0; i < elms.length; i++) toggleElement(elms[i]);
+  for (let i = 0; i < elms.length; i++) elms[i].classList.toggle("hidden");
 }
 
 // task 4
@@ -48,7 +42,7 @@ function task4CssJsToggleElement() {
   let sel = document.getElementById("task4__input").value;
   if(!sel) return;
   let elms = document.querySelectorAll(sel);
-  for (let i = 0; i < elms.length; i++) toggleElement(elms[i]);
+  for (let i = 0; i < elms.length; i++) elms[i].classList.toggle("hidden");
 }
 
 // task 5
@@ -57,11 +51,7 @@ document.getElementById("task5__square").addEventListener("click", task5Alert);
 function task5Alert() {
   alert("Привет!");
   document.getElementById("task5__square").removeEventListener("click", task5Alert);
-  document.getElementById("task5__square").addEventListener("click", () => task5Hide(this));
-}
-
-function task5Hide(elm) {
-  elm.style.display = "none";
+  document.getElementById("task5__square").addEventListener("click", () => this.style.display = "none");
 }
 
 // task 6 
@@ -69,7 +59,7 @@ document.getElementById("task6__btn").addEventListener("mouseover", task6ToggleS
 document.getElementById("task6__btn").addEventListener("mouseout", task6ToggleSquare);
 
 function task6ToggleSquare() {
-  toggleElement(document.getElementById("task6__square"));
+  document.getElementById("task6__square").classList.toggle("hidden");
 }
 
 // task 7
@@ -77,12 +67,12 @@ document.getElementById("task7__input").addEventListener("focus", () => elementO
 document.getElementById("task7__input").addEventListener("keydown", () => elementOnOff(document.getElementById("task7__rect"), false));
 
 // Show / hide element
-function elementOnOff(elm, isOn) {
-  let pos = elm.className.search(" hidden");
-  if(isOn && pos !== -1) {
-    elm.className = elm.className.replace(" hidden", "");
-  } else if(!isOn && pos === -1) {
-    elm.className += " hidden";
+function elementOnOff(elm, turnOn) {
+  let isOff = elm.classList.contains("hidden");
+  if(turnOn && isOff) {
+    elm.classList.remove("hidden");
+  } else if(!turnOn && !isOff) {
+    elm.classList.add("hidden");
   }
 }
 
@@ -115,11 +105,8 @@ function task9ShowImages() {
 }
 
 // task 10
-document.onmousemove = (e) => task10SetCoordinates(e, document.getElementById("task10__text"));
+document.onmousemove = (e) => document.getElementById("task10__text").innerHTML = `Х: ${e.clientX}, У: ${e.clientY}`;
 
-function task10SetCoordinates(e, elm) {
-  elm.innerHTML = `Х: ${e.clientX}, У: ${e.clientY}`;
-}
 
 // task 11
 document.getElementById("task11__text").innerHTML = "Language: " + navigator.language;
