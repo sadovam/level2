@@ -163,3 +163,25 @@ function task13ValuesFromStorages() {
   document.getElementById("task13__input3").innerHTML = getCookie("val13");
 }
 
+// task 14
+let btn = document.createElement("button");
+btn.innerHTML = "^";
+btn.className = "button-up hidden";
+btn.id = "button-up";
+document.body.appendChild(btn);
+btn.onclick = () => document.documentElement.scrollTo(0,0);
+
+window.onscroll = () => {
+  let bottomOffset = document.documentElement.scrollHeight - document.documentElement.scrollTop - document.documentElement.clientHeight;
+  
+  btn = document.getElementById("button-up");
+  if (bottomOffset < 25 && btn.classList.contains("hidden")) {
+    btn.classList.remove("hidden");
+  }
+
+  if (bottomOffset > 100 && !btn.classList.contains("hidden")) {
+    btn.classList.add("hidden");
+  }
+
+}
+

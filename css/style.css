@@ -2,11 +2,15 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
+
 
 body {
   margin: 0;
 }
+
+
 
 .hidden {
   visibility: hidden;
@@ -127,19 +131,32 @@ body {
 
 .task-input {
   width: 200px;
-  height: 40px;
+  
   border: 1px solid gray;
   border-radius: 4px;
+  margin: 5px;
+  padding: 5px;
 }
 
-
-
-
+.button-up {
+  background-color: darkcyan;
+  color: darkgray;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  padding: 10px 15px 5px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+}
 @media only screen and (max-width: 640px) {
   container {
     max-width: 100%;
   }
-  .task1__inner {
+  .inner {
     flex-direction: column;
   }
 }
