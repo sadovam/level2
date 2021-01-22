@@ -203,3 +203,6 @@ document.getElementById("block-screen").onclick = function() {
   this.style.display="none";
   document.body.style.overflow = "auto";
 }; 
+
+//task 17 
+document.getElementById("task17__form").onsubmit = function(event){event.preventDefault()};
