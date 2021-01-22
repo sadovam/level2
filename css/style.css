@@ -152,6 +152,18 @@ body {
   font-size: 24px;
   font-weight: bold;
 }
+
+.task15__big {
+  background-color: darkcyan;
+}
+
+.task15__small {
+  width: 150px;
+  height: 50px;
+  background-color: bisque;
+  margin: 25px 50px;
+}
+
 @media only screen and (max-width: 640px) {
   container {
     max-width: 100%;

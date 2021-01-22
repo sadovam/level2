@@ -185,3 +185,11 @@ window.onscroll = () => {
 
 }
 
+// task 15
+
+document.getElementById("task15__big").onclick = () => alert("BIG");
+document.getElementById("task15__small").onclick = (event) => {
+  alert("small");
+  event.stopPropagation();
+}
+
