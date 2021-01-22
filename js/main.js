@@ -193,3 +193,13 @@ document.getElementById("task15__small").onclick = (event) => {
   event.stopPropagation();
 }
 
+// task 16
+document.getElementById("task16__btn").onclick = function() {
+  document.getElementById("block-screen").style.display="block";
+  document.body.style.overflow="hidden"; 
+}
+
+document.getElementById("block-screen").onclick = function() {
+  this.style.display="none";
+  document.body.style.overflow = "auto";
+}; 
