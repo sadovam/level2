@@ -2,7 +2,9 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
+
 
 body {
   margin: 0;
@@ -19,6 +21,9 @@ body {
 
 .inner {
   padding: 10px;
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .task-section:nth-child(even) {
@@ -36,12 +41,6 @@ body {
   font-size: 27px;
   color:rgb(109, 55, 4);
   padding: 10px 0 0 10px;
-}
-
-.task1__inner {
-  display:flex;
-  align-items: center;
-  justify-content: space-around;
 }
 
 .task-card {
@@ -76,11 +75,123 @@ body {
   margin: 20px;
 }
 
+.red-square {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  margin: 15px;
+}
+
+.green-rectangle {
+  width: 50px;
+  height: 20px;
+  background-color: green;
+  margin: 15px;
+}
+
+.img {
+  width: 200px;
+  padding: 10px;
+}
+
+.task9__images {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.task9__text {
+  width: 300px;
+  height: 100px;
+}
+
+.task10 {
+  width: 200px;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgb(135, 179, 179);
+  text-align: center;
+}
+
+.task11-12 {
+  width: 200px;
+  height: 100px;
+  position: fixed;
+  top: 50px;
+  right: 0;
+  background-color: rgb(104, 139, 139);
+  text-align: center;
+}
+
+
+.task-input {
+  width: 200px;
+  
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.button-up {
+  background-color: darkcyan;
+  color: darkgray;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  padding: 10px 15px 5px;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.task15__big {
+  background-color: darkcyan;
+}
+
+.task15__small {
+  width: 150px;
+  height: 50px;
+  background-color: bisque;
+  margin: 25px 50px;
+}
+
+.block-screen {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+.task18__card {
+  padding: 20px 20px 40px 20px;
+  background-color: rgb(70, 95, 95);
+  border-radius: 5px;
+}
+
+.task18__form {
+  display: none;
+}
+
+.task18__text {
+  color: lightgray;
+}
+
 @media only screen and (max-width: 640px) {
   container {
     max-width: 100%;
   }
-  .task1__inner {
+  .inner {
     flex-direction: column;
   }
 }
