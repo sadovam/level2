@@ -173,6 +173,20 @@ body {
   z-index: 999;
 }
 
+.task18__card {
+  padding: 20px 20px 40px 20px;
+  background-color: rgb(70, 95, 95);
+  border-radius: 5px;
+}
+
+.task18__form {
+  display: none;
+}
+
+.task18__text {
+  color: lightgray;
+}
+
 @media only screen and (max-width: 640px) {
   container {
     max-width: 100%;

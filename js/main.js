@@ -206,3 +206,23 @@ document.getElementById("block-screen").onclick = function() {
 
 //task 17 
 document.getElementById("task17__form").onsubmit = function(event){event.preventDefault()};
+
+//task 18
+document.getElementById("task18__card").ondrop = function(event){
+  event.preventDefault();
+  if (event.dataTransfer.items[0].kind === 'file') {
+    var file = event.dataTransfer.items[0].getAsFile();
+    document.getElementById("task18__text").innerHTML = file.name;
+  }
+};
+
+document.getElementById("task18__card").ondragover = function(event) {
+  event.preventDefault();
+};
+
+
+document.getElementById("task18__input").onchange = function() {
+  document.getElementById("task18__text").innerHTML = this.files[0].name;
+}
+
+document.getElementById("task18__btn").onclick = () => document.getElementById("task18__input").click();
