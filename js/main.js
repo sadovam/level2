@@ -1,4 +1,6 @@
 
+// ======= Part 1
+
 // task 1
 document.getElementById("task1__btn1").onclick = task1CssRemoveSquare;
 document.getElementById("task1__btn2").onclick = task1JsRemoveSquare; 
@@ -226,3 +228,87 @@ document.getElementById("task18__input").onchange = function() {
 }
 
 document.getElementById("task18__btn").onclick = () => document.getElementById("task18__input").click();
+
+// ======= Part 2
+
+// console.log(
+//   prompt("hey")
+//     .toLowerCase()
+//     .split("")
+//     .filter(a => /[a-z]/.test(a))
+//     .map(c => c.charCodeAt())
+//     .reduce((a, c) => ((a[c] = (a[c] || 0)+1), a) , [])
+//     .slice("a".charCodeAt())
+//     .map((c, i) => ({c, i, l: String.fromCharCode(i+97)}))
+//     .sort((a, b) => (b.c || 0) - (a.c || 0))
+//     .map(({c, l}) => `${l} - ${c}` )
+//     .join("\n")
+// )
+
+let scsv = `10,212,Луганськ,401297
+10,213,Вінниця,370707
+10,214,Сімферополь,342054
+10,215,Макіївка,341362
+10,216,Херсон,286958
+
+10,23,Одеса,1017699
+# fdsf fdhdhd dghfdhdfhfd
+
+10,24,Дніпро,990724
+10,25,Донецьк,908456
+10,26,Запоріжжя,731922
+10,27,Львів,724314
+10,28,Кривий Ріг,619278
+10,226,Івано-Франківськ,237686
+10,227,Кам'янське,231915
+10,228,Кропивницький,225339
+10,229,Тернопіль,223462
+10,230,Кременчук,219022
+# hfdhtd tdhtddrt rdghr
+10,29,Миколаїв,480080
+10,210,Маріуполь,436569
+10,211,Севастополь,403893
+10,217,Чернігів,286899
+
+10,218,Полтава,286649
+10,219,Черкаси,274762
+10,20,Київ,2967360
+10,22,Харків,1443207
+10,220,Хмельницький,273713
+10,221,Чернівці,267060
+10,222,Житомир,264318
+10,223,Суми,262119
+#gdgdfgdfgfdg
+
+10,224,Рівне,246003
+10,225,Горлівка,242224
+
+`
+
+function parseCSV(strCSV) {
+  
+  
+  let cities = strCSV.split('\n')
+    .filter(s => s !== "" && !s.startsWith("#"))
+    .map(sc => {
+      let s = sc.split(",");
+      return {x:s[0], y:s[1], tname:s[2], population:+s[3]}
+    })
+    .sort((a, b) => b.population - a.population)
+    .slice(0,10)
+    .reduce(function(a, c, number) {
+      a[c.tname] = {population: c.population, rating: number};
+      return a;
+    }, {});
+    
+  return (str) => {
+    for (let city of Object.keys(cities)) {
+      let re = new RegExp(city, "g");
+      str = str.replace(re, `${city} (${cities[city].rating + 1} место в ТОП-10 самых крупных городов Украины, население ${cities[city].population} человек)`);
+    }
+    return str;
+  }  
+}
+
+funcReplace = parseCSV(scsv);
+console.log(funcReplace("Львів bla bla bla wellcome Харків yes so big here Львів international source Харків was here Одеса"));
