@@ -231,20 +231,6 @@ document.getElementById("task18__btn").onclick = () => document.getElementById("
 
 // ======= Part 2
 
-// console.log(
-//   prompt("hey")
-//     .toLowerCase()
-//     .split("")
-//     .filter(a => /[a-z]/.test(a))
-//     .map(c => c.charCodeAt())
-//     .reduce((a, c) => ((a[c] = (a[c] || 0)+1), a) , [])
-//     .slice("a".charCodeAt())
-//     .map((c, i) => ({c, i, l: String.fromCharCode(i+97)}))
-//     .sort((a, b) => (b.c || 0) - (a.c || 0))
-//     .map(({c, l}) => `${l} - ${c}` )
-//     .join("\n")
-// )
-
 let scsv = `10,212,Луганськ,401297
 10,213,Вінниця,370707
 10,214,Сімферополь,342054
