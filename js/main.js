@@ -3,7 +3,7 @@
 
 // task 1
 document.getElementById("task1__btn1").onclick = task1CssRemoveSquare;
-document.getElementById("task1__btn2").onclick = task1JsRemoveSquare; 
+document.getElementById("task1__btn2").onclick = task1JsRemoveSquare;
 document.getElementById("task1__btn3").onclick = task1CssJsRemoveSquare;
 
 function task1CssRemoveSquare() {
@@ -56,7 +56,7 @@ function task5Alert() {
   document.getElementById("task5__square").addEventListener("click", () => this.style.display = "none");
 }
 
-// task 6 
+// task 6
 document.getElementById("task6__btn").addEventListener("mouseover", task6ToggleSquare);
 document.getElementById("task6__btn").addEventListener("mouseout", task6ToggleSquare);
 
@@ -65,18 +65,8 @@ function task6ToggleSquare() {
 }
 
 // task 7
-document.getElementById("task7__input").addEventListener("focus", () => elementOnOff(document.getElementById("task7__rect"), true));
-document.getElementById("task7__input").addEventListener("keydown", () => elementOnOff(document.getElementById("task7__rect"), false));
-
-// Show / hide element
-function elementOnOff(elm, turnOn) {
-  let isOff = elm.classList.contains("hidden");
-  if(turnOn && isOff) {
-    elm.classList.remove("hidden");
-  } else if(!turnOn && !isOff) {
-    elm.classList.add("hidden");
-  }
-}
+document.getElementById("task7__input").addEventListener("focus", () => document.getElementById("task7__rect").classList.remove("hidden"));
+document.getElementById("task7__input").addEventListener("keydown", () => document.getElementById("task7__rect").classList.add("hidden"));
 
 // task 8
 document.getElementById("task8__btn").onclick = task8ShowImage;
@@ -86,7 +76,7 @@ function task8ShowImage() {
   if(!imgUrl) return;
   let img = document.getElementById("task8__img");
   img.src = imgUrl;
-  elementOnOff(img, true);
+  img.classList.remove("hidden");
 }
 
 // task 9
@@ -103,7 +93,7 @@ function task9ShowImages() {
     img.className = "img";
     imgHolder.appendChild(img);
   }
-  
+
 }
 
 // task 10
@@ -129,34 +119,17 @@ function task12GetUserCoordinates(position) {
 window.addEventListener("unload", task13ValuesToStorages);
 window.addEventListener("load", task13ValuesFromStorages);
 
-function setCookie(cname,cvalue,exdays) {
-  var d = new Date();
-  d.setTime(d.getTime() + (exdays*24*60*60*1000));
-  var expires = "expires=" + d.toGMTString();
-  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
 function getCookie(cname) {
-  var name = cname + "=";
-  var decodedCookie = decodeURIComponent(document.cookie);
-  var ca = decodedCookie.split(';');
-  for(var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) == 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
+  cname += "=";
+  let re = new RegExp('(?<=' + cname + ').*' + '(?=;|$)');
+  return re.exec(decodeURIComponent(document.cookie));
 }
 
 
 function task13ValuesToStorages() {
   localStorage.setItem('val13', document.getElementById("task13__input1").innerHTML);
   sessionStorage.setItem('val13', document.getElementById("task13__input2").innerHTML);
-  setCookie("val13", document.getElementById("task13__input3").innerHTML, 30);
+  document.cookie = 'val13' + "=" + document.getElementById("task13__input3").innerHTML;
 }
 
 function task13ValuesFromStorages() {
@@ -175,7 +148,7 @@ btn.onclick = () => document.documentElement.scrollTo(0,0);
 
 window.onscroll = () => {
   let bottomOffset = document.documentElement.scrollHeight - document.documentElement.scrollTop - document.documentElement.clientHeight;
-  
+
   btn = document.getElementById("button-up");
   if (bottomOffset < 25 && btn.classList.contains("hidden")) {
     btn.classList.remove("hidden");
@@ -198,22 +171,22 @@ document.getElementById("task15__small").onclick = (event) => {
 // task 16
 document.getElementById("task16__btn").onclick = function() {
   document.getElementById("block-screen").style.display="block";
-  document.body.style.overflow="hidden"; 
+  document.body.style.overflow="hidden";
 }
 
 document.getElementById("block-screen").onclick = function() {
   this.style.display="none";
   document.body.style.overflow = "auto";
-}; 
+};
 
-//task 17 
+//task 17
 document.getElementById("task17__form").onsubmit = function(event){event.preventDefault()};
 
 //task 18
 document.getElementById("task18__card").ondrop = function(event){
   event.preventDefault();
   if (event.dataTransfer.items[0].kind === 'file') {
-    var file = event.dataTransfer.items[0].getAsFile();
+    let file = event.dataTransfer.items[0].getAsFile();
     document.getElementById("task18__text").innerHTML = file.name;
   }
 };
@@ -272,8 +245,8 @@ let scsv = `10,212,Луганськ,401297
 `
 
 function parseCSV(strCSV) {
-  
-  
+
+
   let cities = strCSV.split('\n')
     .filter(s => s !== "" && !s.startsWith("#"))
     .map(sc => {
@@ -286,15 +259,20 @@ function parseCSV(strCSV) {
       a[c.tname] = {population: c.population, rating: number};
       return a;
     }, {});
-    
+
   return (str) => {
     for (let city of Object.keys(cities)) {
-      let re = new RegExp(city, "g");
+      let re = new RegExp(city + '(?=\\s|\\.|,|$)', "g");
       str = str.replace(re, `${city} (${cities[city].rating + 1} место в ТОП-10 самых крупных городов Украины, население ${cities[city].population} человек)`);
     }
     return str;
-  }  
+  }
 }
 
 funcReplace = parseCSV(scsv);
 console.log(funcReplace("Львів bla bla bla wellcome Харків yes so big here Львів international source Харків was here Одеса"));
+let s = `Львів, город с богатой историей, расположенный на западе Украины, был основан в XIII в.
+и с тех пор много раз менял флаг: он принадлежал Польше, Австро-Венгрии и Советской империи. Во Львіве
+организовано много городских праздников, таких как праздники кофе и шоколада, праздник сыра и вина, ежегодный день хлеба и другие. Харків является одним из
+крупнейших городов Украины, а также областным центром Харківської области. `
+console.log(funcReplace(s));
