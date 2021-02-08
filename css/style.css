@@ -126,6 +126,10 @@ body {
   text-align: center;
 }
 
+.card-title {
+  font-weight: bold;
+  text-align: center;
+}
 
 .task-input {
   width: 200px;
