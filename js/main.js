@@ -121,7 +121,7 @@ window.addEventListener("load", task13ValuesFromStorages);
 
 function getCookie(cname) {
   cname += "=";
-  let re = new RegExp('(?<=' + cname + ').*' + '(?=;|$)');
+  let re = new RegExp('(?<=' + cname + ').*?' + '(?=;|$)');
   return re.exec(decodeURIComponent(document.cookie));
 }
 
